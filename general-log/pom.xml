@@ -37,17 +37,25 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>configuration</id>
-                        <goals>
-                            <goal>get</goal>
-                        </goals>
+                        <id>default-get</id>
                         <configuration>
                             <packages>
                                 <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
                             </packages>
-                            <branch>master</branch>
                         </configuration>
                     </execution>
+                    <!--<execution>-->
+                        <!--<id>configuration</id>-->
+                        <!--<goals>-->
+                            <!--<goal>get</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<packages>-->
+                                <!--<package>github.com/itziklavon/kit2go/configuration/src/configuration</package>-->
+                            <!--</packages>-->
+                            <!--<branch>master</branch>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
                     <execution>
                         <id>default-test</id>
                         <configuration>
