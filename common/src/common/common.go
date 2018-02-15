@@ -1,7 +1,7 @@
 package common
 
 import (
-	"general_log"
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
 )
 
 func PrintHello(name string) {

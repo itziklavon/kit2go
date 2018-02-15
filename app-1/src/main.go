@@ -1,7 +1,7 @@
 package main
 
 import (
-	"../../common/src/common"
+	"github.com/itziklavon/kit2go/common/src/common"
 )
 
 func main() {

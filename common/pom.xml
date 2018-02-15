@@ -32,10 +32,10 @@
                 <extensions>true</extensions>
                 <configuration>
                     <goVersion>${go.sdk.version}</goVersion>
-                    <addToGoPath>
-                        <general-log>${basedir}/../general-log</general-log>
-                        <configuration>${basedir}/../configuration</configuration>
-                    </addToGoPath>
+                    <!--<addToGoPath>-->
+                        <!--<general-log>${basedir}/../general-log</general-log>-->
+                        <!--<configuration>${basedir}/../configuration</configuration>-->
+                    <!--</addToGoPath>-->
                 </configuration>
                 <executions>
                     <execution>
@@ -47,22 +47,14 @@
                         <phase>none</phase>
                     </execution>
                     <execution>
-                        <id>default-get</id>
+                        <id>common</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
                         <configuration>
-                            <buildFlags>
-                                <flag>-u</flag>
-                            </buildFlags>
                             <packages>
-                                <package>gopkg.in/natefinch/lumberjack.v2</package>
+                                <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
                             </packages>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>default-test</id>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-v</flag>
-                            </buildFlags>
                         </configuration>
                     </execution>
                 </executions>

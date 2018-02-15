@@ -1,6 +1,6 @@
 package main
 
-import "../../common/src/common"
+import "github.com/itziklavon/kit2go/common/src/common"
 
 func main() {
 	common.PrintHello("universe")
