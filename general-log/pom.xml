@@ -37,7 +37,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>general_log</id>
+                        <id>configuration</id>
                         <goals>
                             <goal>get</goal>
                         </goals>
