@@ -2,7 +2,7 @@ package general_log
 
 import (
 	"fmt"
-	"configuration"
+	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 	"log"
 )
