@@ -47,6 +47,7 @@
                             <packages>
                                 <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
                             </packages>
+                            <branch>master</branch>
                         </configuration>
                     </execution>
                     <execution>

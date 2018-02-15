@@ -45,6 +45,7 @@
                             <packages>
                                 <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
                             </packages>
+                            <branch>master</branch>
                         </configuration>
                     </execution>
                     <execution>
