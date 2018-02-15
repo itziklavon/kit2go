@@ -31,6 +31,9 @@
                 <extensions>true</extensions>
                 <configuration>
                     <goVersion>${go.sdk.version}</goVersion>
+                    <addToGoPath>
+                        <configuration>${basedir}/../configuration</configuration>
+                    </addToGoPath>
                 </configuration>
                 <executions>
                     <execution>
@@ -49,17 +52,6 @@
                             </buildFlags>
                             <packages>
                                 <package>gopkg.in/natefinch/lumberjack.v2</package>
-                            </packages>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>configuration</id>
-                        <goals>
-                            <goal>get</goal>
-                        </goals>
-                        <configuration>
-                            <packages>
-                                <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
                             </packages>
                         </configuration>
                     </execution>
