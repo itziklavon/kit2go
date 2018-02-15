@@ -31,31 +31,38 @@
                 <extensions>true</extensions>
                 <configuration>
                     <goVersion>${go.sdk.version}</goVersion>
-                    <!--<addToGoPath>-->
-                        <!--<configuration>${basedir}/../configuration</configuration>-->
-                    <!--</addToGoPath>-->
                 </configuration>
                 <executions>
                     <execution>
+                        <id>default-build</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-mvninstall</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
                         <id>default-get</id>
                         <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>gopkg.in/natefinch/lumberjack.v2</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>configuration</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
                             <packages>
                                 <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
                             </packages>
                         </configuration>
                     </execution>
-                    <!--<execution>-->
-                        <!--<id>configuration</id>-->
-                        <!--<goals>-->
-                            <!--<goal>get</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<packages>-->
-                                <!--<package>github.com/itziklavon/kit2go/configuration/src/configuration</package>-->
-                            <!--</packages>-->
-                            <!--<branch>master</branch>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
                     <execution>
                         <id>default-test</id>
                         <configuration>
