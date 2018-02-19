@@ -35,7 +35,7 @@ func Keys() []string {
 	return value
 }
 
-func Keys(pattern string) []string {
+func KeysWithPattern(pattern string) []string {
 	conn := getRedisConnection()
 	value := conn.Keys(pattern)
 	if err != nil {
