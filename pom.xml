@@ -28,6 +28,7 @@
         <module>common</module>
         <module>app-1</module>
         <module>app-2</module>
+        <module>app-3</module>
         <module>assembly-results</module>
     </modules>
 
@@ -52,10 +53,5 @@
             <name>GameScale Releases</name>
             <url>http://192.168.10.50:8081/nexus/content/repositories/releases</url>
         </repository>
-        <!--<repository>-->
-        <!--<id>releases</id>-->
-        <!--<name>GameScale Releases</name>-->
-        <!--<url>http://35.176.201.181:8081/repository/Releases/</url>-->
-        <!--</repository>-->
     </repositories>
 </project>
