@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.kit2go</groupId>
+        <artifactId>kit2go</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>http-client</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <build>
+        <sourceDirectory>${basedir}${file.separator}src</sourceDirectory>
+        <directory>${basedir}${file.separator}bin</directory>
+
+        <resources>
+            <resource>
+                <directory>${basedir}${file.separator}resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.igormaznitsa</groupId>
+                <artifactId>mvn-golang-wrapper</artifactId>
+                <version>2.1.6</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <goVersion>${go.sdk.version}</goVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-build</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-mvninstall</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>configuration</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-test</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-v</flag>
+                            </buildFlags>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>configuration</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-test</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-v</flag>
+                            </buildFlags>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
