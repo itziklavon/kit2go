@@ -37,7 +37,7 @@ func Keys() []string {
 
 func Keys(pattern string) []string {
 	conn := getRedisConnection()
-	value, err := conn.Keys(pattern)
+	value := conn.Keys(pattern)
 	if err != nil {
 		general_log.ErrorException(":Keys: couldn't get Keys from redis", err)
 	}
