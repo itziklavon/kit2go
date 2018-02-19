@@ -11,7 +11,9 @@
     </parent>
 
     <artifactId>app-3</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <packaging>mvn-golang</packaging>
+
+    <name>App-3</name>
 
     <build>
         <sourceDirectory>${basedir}${file.separator}src</sourceDirectory>
@@ -73,7 +75,7 @@
                                 <flag>-u</flag>
                             </buildFlags>
                             <packages>
-                                <package>github.com/itziklavon/kit2go/redis/src/redis</package>
+                                <package>github.com/itziklavon/kit2go/redis-helper/src/redis_helper</package>
                             </packages>
                         </configuration>
                     </execution>
@@ -81,35 +83,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>GameScale Releases</name>
-            <url>http://192.168.10.50:8081/nexus/content/repositories/releases</url>
-            <uniqueVersion>true</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>GameScale Snapshots</name>
-            <url>http://192.168.10.50:8081/nexus/content/repositories/snapshots</url>
-            <uniqueVersion>true</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>releases</id>
-            <name>GameScale Releases</name>
-            <url>http://192.168.10.50:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <!--<repository>-->
-        <!--<id>releases</id>-->
-        <!--<name>GameScale Releases</name>-->
-        <!--<url>http://35.176.201.181:8081/repository/Releases/</url>-->
-        <!--</repository>-->
-    </repositories>
-
-    
 </project>

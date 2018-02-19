@@ -71,33 +71,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>GameScale Releases</name>
-            <url>http://192.168.10.50:8081/nexus/content/repositories/releases</url>
-            <uniqueVersion>true</uniqueVersion>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>GameScale Snapshots</name>
-            <url>http://192.168.10.50:8081/nexus/content/repositories/snapshots</url>
-            <uniqueVersion>true</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>releases</id>
-            <name>GameScale Releases</name>
-            <url>http://192.168.10.50:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <!--<repository>-->
-        <!--<id>releases</id>-->
-        <!--<name>GameScale Releases</name>-->
-        <!--<url>http://35.176.201.181:8081/repository/Releases/</url>-->
-        <!--</repository>-->
-    </repositories>
 </project>

@@ -28,6 +28,14 @@
                 <include>app-2-${project.version}.exe</include>
             </includes>
         </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/../app-3/bin</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>app-3-${project.version}</include>
+                <include>app-3-${project.version}.exe</include>
+            </includes>
+        </fileSet>
     </fileSets>
 
 </assembly>
