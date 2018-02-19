@@ -3,7 +3,7 @@ package redis
 import (
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
-	"menteslibres.net/gosexy/redis"
+	"github.com/go-redis/redis"
 )
 
 var redisHost = configuration.GetPropertyValue("REDIS_HOST")
@@ -13,9 +13,12 @@ func getRedisConnection() *redis.Client {
 }
 
 func getRedisConnectionByHost(host string) *redis.Client {
-	var client *redis.Client
-	client = redis.New()
-	err := client.Connect(host, 6379)
+	client := redis.NewClient(&redis.Options{
+		Addr:     redisHost + ":6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
+	pong, err := client.Ping().Result()
 	if err != nil {
 		log.ErrorException(":getRedisConnection: couldn't connect ro redis", err)
 	}
