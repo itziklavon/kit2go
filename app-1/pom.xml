@@ -67,6 +67,28 @@
                             </packages>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>http-helper</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/http-client/src/http</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>redis-helper</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/redis/src/redis</package>
+                            </packages>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
