@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-	common.PrintHello("world")
-	common.PrintHello(redis.GGetRedisConnection(7))
+	common.PrintHello(redis.GetRedisConnection(7))
 }

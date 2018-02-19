@@ -2,13 +2,10 @@ package redis
 
 
 import (
-	"github.com/itziklavon/kit2go/general-log/src/general_log"
-
-	"github.com/itziklavon/kit2go/http-client/src/http"
-
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
+	"github.com/itziklavon/kit2go/http-client/src/http"
 	"menteslibres.net/gosexy/redis"
-
 	"encoding/json"
 )
 

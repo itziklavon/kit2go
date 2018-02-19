@@ -2,7 +2,6 @@ package redis
 
 import (
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
-
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	"menteslibres.net/gosexy/redis"
 )
