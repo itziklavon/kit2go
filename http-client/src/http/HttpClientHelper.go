@@ -39,7 +39,7 @@ func GET(url string, headers map[string]string) GenericHttpResponse {
 	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(body), httpHeaders: responseHeaders}
 }
 
-func GETBody(url string, headers map[string]string) GenericHttpResponse {
+func GETBody(url string, headers map[string]string) string {
 	req, err := http.NewRequest("GET", url, nil)
 	if headers != nil {
 		for key, value := range headers {
