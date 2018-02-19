@@ -10,7 +10,7 @@ import (
 var DISCOVERY_URL = configuration.GetPropertyValue("DISCOVERY_URL")
 
 
-var redisConnections map[int]String
+var redisConnections map[int]string
 
 type RedisData struct {
 	BrandId int `json:"brandId"`
