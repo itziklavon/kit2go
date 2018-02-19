@@ -75,7 +75,7 @@ func POST(url string, body map[string]string, headers map[string]string) Generic
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.ErrorException(":POST: couldn't send request", err)
+		general_log.ErrorException(":POST: couldn't send request", err)
 	}
 	defer resp.Body.Close()
 	general_log.Info("response Status:" + resp.Status)
