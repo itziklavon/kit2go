@@ -55,15 +55,15 @@ func Get(key string) string {
 	return value
 }
 
-func Set(key string, value string) string {
-	conn := getRedisConnection()
-	str, err := conn.Set(key, value).Result()
-	if err != nil {
-		general_log.ErrorException(":Set: couldn't set key from redis: " + key, err)
-	}
-	defer conn.Close()
-	return str
-}
+//func Set(key string, value string) string {
+//	conn := getRedisConnection()
+//	str, err := conn.Set(key, value).Result()
+//	if err != nil {
+//		general_log.ErrorException(":Set: couldn't set key from redis: " + key, err)
+//	}
+//	defer conn.Close()
+//	return str
+//}
 
 func HGet(key string, hkey string) string {
 	conn := getRedisConnection()
@@ -75,17 +75,17 @@ func HGet(key string, hkey string) string {
 	return value
 }
 
-func HSet(key string, hkey string, value string) {
-	conn := getRedisConnection()
-	str, err := conn.HSet(key, hkey, value).Result()
-	if str {
-		general_log.ErrorException(":Set: key doesn't exists in redis: " + key + ", hKey: " + hkey, err)
-	}
-	if err != nil {
-		general_log.ErrorException(":Set: couldn't get key from redis: " + key + ", hKey: " + hkey, err)
-	}
-	defer conn.Close()
-}
+//func HSet(key string, hkey string, value string) {
+//	conn := getRedisConnection()
+//	str, err := conn.HSet(key, hkey, value).Result()
+//	if str {
+//		general_log.ErrorException(":Set: key doesn't exists in redis: " + key + ", hKey: " + hkey, err)
+//	}
+//	if err != nil {
+//		general_log.ErrorException(":Set: couldn't get key from redis: " + key + ", hKey: " + hkey, err)
+//	}
+//	defer conn.Close()
+//}
 
 func GetSysParam(hkey string) string {
 	return HGet("SysParams", hkey)
