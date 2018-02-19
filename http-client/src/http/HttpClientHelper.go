@@ -25,16 +25,16 @@ func GET(url string, headers map[string]string) GenericHttpResponse {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.ErrorException(":GET: couldn't send request", err)
+		general_log.ErrorException(":GET: couldn't send request", err)
 	}
 	defer resp.Body.Close()
-	log.Info("response Status:" + resp.Status)
+	general_log.Info("response Status:" + resp.Status)
 	body, _ := ioutil.ReadAll(resp.Body)
-	log.Info("response Body:" + string(body))
+	general_log.Info("response Body:" + string(body))
 	var responseHeaders = make(map[string]string)
 	for key, value := range resp.Header {
 		responseHeaders[key] = value[0]
-		log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
+		general_log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
 	}
 	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(body), httpHeaders: responseHeaders}
 }
@@ -49,16 +49,16 @@ func GETBody(url string, headers map[string]string) string {
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.ErrorException(":GET: couldn't send request", err)
+		general_log.ErrorException(":GET: couldn't send request", err)
 	}
 	defer resp.Body.Close()
-	log.Info("response Status:" + resp.Status)
+	general_log.Info("response Status:" + resp.Status)
 	body, _ := ioutil.ReadAll(resp.Body)
-	log.Info("response Body:" + string(body))
+	general_log.Info("response Body:" + string(body))
 	var responseHeaders = make(map[string]string)
 	for key, value := range resp.Header {
 		responseHeaders[key] = value[0]
-		log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
+		general_log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
 	}
 	return string(body)
 }
@@ -78,13 +78,13 @@ func POST(url string, body map[string]string, headers map[string]string) Generic
 		log.ErrorException(":POST: couldn't send request", err)
 	}
 	defer resp.Body.Close()
-	log.Info("response Status:" + resp.Status)
+	general_log.Info("response Status:" + resp.Status)
 	responseBody, _ := ioutil.ReadAll(resp.Body)
-	log.Info("response Body:" + string(responseBody))
+	general_log.Info("response Body:" + string(responseBody))
 	var responseHeaders = make(map[string]string)
 	for key, value := range resp.Header {
 		responseHeaders[key] = value[0]
-		log.Info(":POST: response Headers: key: " + key + ", value: " + value[0])
+		general_log.Info(":POST: response Headers: key: " + key + ", value: " + value[0])
 	}
 	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(responseBody), httpHeaders: responseHeaders}
 }
@@ -100,16 +100,16 @@ func PUT(url string, body map[string]string, headers map[string]string) GenericH
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.ErrorException(":PUT: couldn't send request", err)
+		general_log.ErrorException(":PUT: couldn't send request", err)
 	}
 	defer resp.Body.Close()
-	log.Info("response Status:" + resp.Status)
+	general_log.Info("response Status:" + resp.Status)
 	responseBody, _ := ioutil.ReadAll(resp.Body)
-	log.Info("response Body:" + string(responseBody))
+	general_log.Info("response Body:" + string(responseBody))
 	var responseHeaders = make(map[string]string)
 	for key, value := range resp.Header {
 		responseHeaders[key] = value[0]
-		log.Info(":PUT: response Headers: key: " + key + ", value: " + value[0])
+		general_log.Info(":PUT: response Headers: key: " + key + ", value: " + value[0])
 	}
 	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(responseBody), httpHeaders: responseHeaders}
 }
@@ -125,16 +125,16 @@ func DELETE(url string, body map[string]string, headers map[string]string) Gener
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		log.ErrorException(":DELETEGET: couldn't send request", err)
+		general_log.ErrorException(":DELETEGET: couldn't send request", err)
 	}
 	defer resp.Body.Close()
-	log.Info("response Status:" + resp.Status)
+	general_log.Info("response Status:" + resp.Status)
 	responseBody, _ := ioutil.ReadAll(resp.Body)
-	log.Info("response Body:" + string(responseBody))
+	general_log.Info("response Body:" + string(responseBody))
 	var responseHeaders = make(map[string]string)
 	for key, value := range resp.Header {
 		responseHeaders[key] = value[0]
-		log.Info(":DELETE: response Headers: key: " + key + ", value: " + value[0])
+		general_log.Info(":DELETE: response Headers: key: " + key + ", value: " + value[0])
 	}
 	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(responseBody), httpHeaders: responseHeaders}
 }
