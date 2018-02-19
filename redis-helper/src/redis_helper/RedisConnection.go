@@ -20,7 +20,7 @@ func getRedisConnectionByHost(host string) *redis.Client {
 	})
 	_, err := client.Ping().Result()
 	if err != nil {
-		log.ErrorException(":getRedisConnection: couldn't connect ro redis", err)
+		general_log.ErrorException(":getRedisConnection: couldn't connect ro redis", err)
 	}
 	return client
 }
