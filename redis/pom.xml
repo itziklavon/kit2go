@@ -64,21 +64,24 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>default-test</id>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-v</flag>
-                            </buildFlags>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>configuration</id>
+                        <id>log</id>
                         <configuration>
                             <buildFlags>
                                 <flag>-u</flag>
                             </buildFlags>
                             <packages>
                                 <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>http</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/http-client/src/http</package>
                             </packages>
                         </configuration>
                     </execution>

@@ -39,6 +39,31 @@ func GET(url string, headers map[string]string) GenericHttpResponse {
 	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(body), httpHeaders: responseHeaders}
 }
 
+func GETBody(url string, headers map[string]string) GenericHttpResponse {
+	req, err := http.NewRequest("GET", url, nil)
+	if headers != nil {
+		for key, value := range headers {
+			req.Header.Set(key, value)
+		}
+	}
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.ErrorException(":GET: couldn't send request", err)
+	}
+	defer resp.Body.Close()
+	log.Info("response Status:" + resp.Status)
+	body, _ := ioutil.ReadAll(resp.Body)
+	log.Info("response Body:" + string(body))
+	var responseHeaders = make(map[string]string)
+	for key, value := range resp.Header {
+		responseHeaders[key] = value[0]
+		log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
+	}
+	return string(body)
+}
+
+
 func POST(url string, body map[string]string, headers map[string]string) GenericHttpResponse {
 	jsonValue, _ := json.Marshal(body)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonValue))

@@ -53,15 +53,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>default-test</id>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-v</flag>
-                            </buildFlags>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>configuration</id>
+                        <id>log</id>
                         <configuration>
                             <buildFlags>
                                 <flag>-u</flag>

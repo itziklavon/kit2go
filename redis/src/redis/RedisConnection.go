@@ -3,16 +3,20 @@ package redis
 import (
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
 
-	".github.com/itziklavon/kit2go/configuration/src/configuration"
+	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	"menteslibres.net/gosexy/redis"
 )
 
 var redisHost = configuration.GetPropertyValue("REDIS_HOST")
 
 func getRedisConnection() *redis.Client {
+	return getRedisConnectionByHost(redisHost)
+}
+
+func getRedisConnectionByHost(host string) *redis.Client {
 	var client *redis.Client
 	client = redis.New()
-	err := client.Connect(redisHost, 6379)
+	err := client.Connect(host, 6379)
 	if err != nil {
 		log.ErrorException(":getRedisConnection: couldn't connect ro redis", err)
 	}
