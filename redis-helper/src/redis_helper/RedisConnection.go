@@ -27,7 +27,7 @@ func getRedisConnectionByHost(host string) *redis.Client {
 
 func Keys() []string {
 	conn := getRedisConnection()
-	value, err := conn.Keys("*")
+	value := conn.Keys("*")
 	if err != nil {
 		general_log.ErrorException(":Keys: couldn't get Keys from redis", err)
 	}
@@ -47,7 +47,7 @@ func KeysWithPattern(pattern string) []string {
 
 func Get(key string) string {
 	conn := getRedisConnection()
-	value, err := conn.Get(key)
+	value := conn.Get(key)
 	if err != nil {
 		general_log.ErrorException(":Get: couldn't get key from redis: " + key, err)
 	}
@@ -57,7 +57,7 @@ func Get(key string) string {
 
 func Set(key string, value string) string {
 	conn := getRedisConnection()
-	str, err := conn.Set(key, value)
+	str := conn.Set(key, value)
 	if err != nil {
 		general_log.ErrorException(":Set: couldn't set key from redis: " + key, err)
 	}
@@ -67,7 +67,7 @@ func Set(key string, value string) string {
 
 func HGet(key string, hkey string) string {
 	conn := getRedisConnection()
-	value, err := conn.HGet(key, hkey)
+	value := conn.HGet(key, hkey)
 	if err != nil {
 		general_log.ErrorException(":Set: couldn't get key from redis: " + key + ", hKey: " + hkey, err)
 	}
@@ -77,7 +77,7 @@ func HGet(key string, hkey string) string {
 
 func HSet(key string, hkey string, value string) {
 	conn := getRedisConnection()
-	str, err := conn.HSet(key, hkey, value)
+	str := conn.HSet(key, hkey, value)
 	if str {
 		general_log.ErrorException(":Set: key doesn't exists in redis: " + key + ", hKey: " + hkey, err)
 	}
