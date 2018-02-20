@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>common</artifactId>
-    <!--<packaging>mvn-golang</packaging>-->
+    <packaging>mvn-golang</packaging>
 
     <name>Common</name>
 
