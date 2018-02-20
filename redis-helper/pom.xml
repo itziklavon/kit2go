@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>redis_helper</artifactId>
+    <artifactId>redis-helper</artifactId>
 
     <build>
         <sourceDirectory>${basedir}${file.separator}src</sourceDirectory>
