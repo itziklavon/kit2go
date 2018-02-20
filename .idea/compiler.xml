@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for kit2go" enabled="true">
+        <sourceOutputDir name="bin/generated-sources/annotations" />
+        <sourceTestOutputDir name="bin/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="app-1" />
+        <module name="app-2" />
+        <module name="app-3" />
+        <module name="common" />
+        <module name="configuration" />
+        <module name="log" />
+        <module name="redis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="app-1" target="1.5" />
+      <module name="app-2" target="1.5" />
+      <module name="app-3" target="1.5" />
+      <module name="assembly-results" target="1.5" />
+      <module name="common" target="1.5" />
+      <module name="configuration" target="1.5" />
+      <module name="http-client" target="1.5" />
+      <module name="kit2go" target="1.5" />
+      <module name="log" target="1.5" />
+      <module name="redis" target="1.5" />
+      <module name="redis-common" target="1.5" />
+      <module name="redis-helper" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

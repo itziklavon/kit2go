@@ -3,7 +3,6 @@ package common
 
 import (
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
-	"github.com/itziklavon/kit2go/http-client/src/http"
 	"encoding/json"
 )
 
@@ -27,7 +26,7 @@ func GetRedisConnection(brandId int) string {
 func initMap() {
 	redisConnections = make(map[int]string)
 	url := DISCOVERY_URL + "discovery-web/brand/services/REDIS"
-	httpResponse := http.GETBody(url, nil)
+	httpResponse := common.GETBody(url, nil)
 	var arr []RedisData
 	_ = json.Unmarshal([]byte(httpResponse), &arr)
 	for i := 0; i < len(arr); i = i + 1 {
