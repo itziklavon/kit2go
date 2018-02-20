@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	 "github.com/itziklavon/kit2go/common/src/common"
+	"github.com/itziklavon/kit2go/common/src/common"
 )
 
 func main() {
