@@ -47,7 +47,7 @@
                                 <flag>-u</flag>
                             </buildFlags>
                             <packages>
-                                <package>menteslibres.net/gosexy/redis</package>
+                                <package>github.com/go-redis/redis</package>
                             </packages>
                         </configuration>
                     </execution>
