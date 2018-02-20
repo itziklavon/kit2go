@@ -75,7 +75,7 @@
                                 <flag>-v -u</flag>
                             </buildFlags>
                             <packages>
-                                <package>github.com/itziklavon/kit2go/redis-helper/src/redis_helper</package>
+                                <package>github.com/itziklavon/kit2go/redis-common/src</package>
                             </packages>
                         </configuration>
                     </execution>
