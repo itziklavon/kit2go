@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/itziklavon/kit2go/redis-common/src"
+	"github.com/itziklavon/kit2go/redis-common/src/redis-common"
 )
 
 func main() {
