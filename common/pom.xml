@@ -32,10 +32,6 @@
                 <extensions>true</extensions>
                 <configuration>
                     <goVersion>${go.sdk.version}</goVersion>
-                    <!--<addToGoPath>-->
-                        <!--<general-log>${basedir}/../general-log</general-log>-->
-                        <!--<configuration>${basedir}/../configuration</configuration>-->
-                    <!--</addToGoPath>-->
                 </configuration>
                 <executions>
                     <execution>
