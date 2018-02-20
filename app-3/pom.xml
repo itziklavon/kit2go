@@ -72,7 +72,7 @@
                         <id>redis</id>
                         <configuration>
                             <buildFlags>
-                                <flag>-u</flag>
+                                <flag>-v -u</flag>
                             </buildFlags>
                             <packages>
                                 <package>github.com/itziklavon/kit2go/redis-helper/src/redis_helper</package>
