@@ -25,6 +25,7 @@
         <module>general-log</module>
         <module>http-client</module>
         <module>redis-helper</module>
+        <module>redis-common</module>
         <module>common</module>
         <module>app-1</module>
         <module>app-2</module>
