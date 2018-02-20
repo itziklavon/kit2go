@@ -1,4 +1,4 @@
-package redis_common
+package common
 
 import (
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
