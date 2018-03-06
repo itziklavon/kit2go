@@ -53,17 +53,6 @@
                             </packages>
                         </configuration>
                     </execution>
-                    <!--<execution>-->
-                        <!--<id>go-redis</id>-->
-                        <!--<configuration>-->
-                            <!--<buildFlags>-->
-                                <!--<flag>-v -u</flag>-->
-                            <!--</buildFlags>-->
-                            <!--<packages>-->
-                                <!--<package>github.com/go-redis/redis</package>-->
-                            <!--</packages>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
                     <execution>
                         <id>general_log</id>
                         <goals>
