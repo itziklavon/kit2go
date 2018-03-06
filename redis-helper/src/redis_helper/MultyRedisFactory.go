@@ -3,7 +3,7 @@ package redis_helper
 import (
 	"encoding/json"
 	"github.com/go-redis/redis"
-	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"ithub.com/itziklavon/kit2go/configuration/src/configuration"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
 )
 
@@ -20,7 +20,7 @@ func GetRedisConnection(brandId int) *redis.Client {
 	if len(redisConnections) == 0 {
 		initMap()
 	}
-	return redisConnections[brandId]
+	return getBrandRedisConnection(redisConnections[brandId])
 }
 
 func initMap() {

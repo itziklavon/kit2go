@@ -54,20 +54,6 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>general_log</id>
-                        <goals>
-                            <goal>get</goal>
-                        </goals>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-u</flag>
-                            </buildFlags>
-                            <packages>
-                                <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
-                            </packages>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>configuration</id>
                         <goals>
                             <goal>get</goal>
@@ -78,6 +64,20 @@
                             </buildFlags>
                             <packages>
                                 <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>general_log</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
                             </packages>
                         </configuration>
                     </execution>
