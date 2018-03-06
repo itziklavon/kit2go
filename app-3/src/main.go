@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/itziklavon/kit2go/common/src/common"
+	"github.com/itziklavon/kit2go/redis-helper/src/redis_helper"
 )
 
 func main() {
-	fmt.Printf(common.GetRedisConnection(7))
+	fmt.Printf(redis_helper.GetRedisConnection(7))
 	fmt.Println()
 }
