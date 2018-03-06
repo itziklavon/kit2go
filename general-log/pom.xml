@@ -54,6 +54,9 @@
                     </execution>
                     <execution>
                         <id>configuration</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
                         <configuration>
                             <buildFlags>
                                 <flag>-u</flag>

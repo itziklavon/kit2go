@@ -1,11 +1,11 @@
 package common
 
 import (
-	"github.com/itziklavon/kit2go/general-log/src/general_log"
-	"github.com/itziklavon/kit2go/configuration/src/configuration"
-	"github.com/go-redis/redis"
-	"encoding/json"
 	"bytes"
+	"encoding/json"
+	"github.com/go-redis/redis"
+	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
 	"io/ioutil"
 	"net/http"
 )
@@ -17,7 +17,7 @@ var DISCOVERY_URL = configuration.GetPropertyValue("DISCOVERY_URL")
 var redisConnections map[int]string
 
 type RedisData struct {
-	BrandId int `json:"brandId"`
+	BrandId int    `json:"brandId"`
 	Uri     string `json:"uri"`
 }
 
@@ -214,7 +214,7 @@ func Get(key string) string {
 	conn := getRedisConnection()
 	value, err := conn.Get(key).Result()
 	if err != nil {
-		general_log.ErrorException(":Get: couldn't get key from redis: " + key, err)
+		general_log.ErrorException(":Get: couldn't get key from redis: "+key, err)
 	}
 	defer conn.Close()
 	return value
@@ -234,7 +234,7 @@ func HGet(key string, hkey string) string {
 	conn := getRedisConnection()
 	value, err := conn.HGet(key, hkey).Result()
 	if err != nil {
-		general_log.ErrorException(":Set: couldn't get key from redis: " + key + ", hKey: " + hkey, err)
+		general_log.ErrorException(":Set: couldn't get key from redis: "+key+", hKey: "+hkey, err)
 	}
 	defer conn.Close()
 	return value
@@ -259,4 +259,3 @@ func GetSysParam(hkey string) string {
 func GetBrandId() string {
 	return GetSysParam("GS_BRAND_ID")
 }
-

@@ -35,29 +35,10 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>configuration</id>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-u</flag>
-                            </buildFlags>
-                            <packages>
-                                <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
-                            </packages>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>general_log</id>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-u</flag>
-                            </buildFlags>
-                            <packages>
-                                <package>github.com/itziklavon/kit2go/general_log/src/general_log</package>
-                            </packages>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>common</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
                         <configuration>
                             <buildFlags>
                                 <flag>-u</flag>

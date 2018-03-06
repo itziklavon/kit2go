@@ -43,7 +43,32 @@
                         <phase>none</phase>
                     </execution>
                     <execution>
+                        <id>default-get</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/go-redis/redis</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <!--<execution>-->
+                        <!--<id>go-redis</id>-->
+                        <!--<configuration>-->
+                            <!--<buildFlags>-->
+                                <!--<flag>-v -u</flag>-->
+                            <!--</buildFlags>-->
+                            <!--<packages>-->
+                                <!--<package>github.com/go-redis/redis</package>-->
+                            <!--</packages>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                    <execution>
                         <id>general_log</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
                         <configuration>
                             <buildFlags>
                                 <flag>-u</flag>
