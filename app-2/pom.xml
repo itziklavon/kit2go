@@ -35,10 +35,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>common</id>
-                        <goals>
-                            <goal>get</goal>
-                        </goals>
+                        <id>default-get</id>
                         <configuration>
                             <buildFlags>
                                 <flag>-u</flag>

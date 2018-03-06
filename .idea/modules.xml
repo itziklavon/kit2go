@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/app-1/app-1.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/app-1/app-1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/app-2/app-2.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/app-2/app-2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/app-3/app-3.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/app-3/app-3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/assembly-results/assembly-results.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/assembly-results/assembly-results.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/common/common.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/configuration/configuration.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/configuration/configuration.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/kit2go.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/kit2go.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../kit2go-github-new/general-log/log.iml" filepath="$PROJECT_DIR$/../kit2go-github-new/general-log/log.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-1/app-1.iml" filepath="$PROJECT_DIR$/app-1/app-1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-2/app-2.iml" filepath="$PROJECT_DIR$/app-2/app-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-3/app-3.iml" filepath="$PROJECT_DIR$/app-3/app-3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assembly-results/assembly-results.iml" filepath="$PROJECT_DIR$/assembly-results/assembly-results.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configuration/configuration.iml" filepath="$PROJECT_DIR$/configuration/configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kit2go.iml" filepath="$PROJECT_DIR$/kit2go.iml" />
+      <module fileurl="file://$PROJECT_DIR$/general-log/log.iml" filepath="$PROJECT_DIR$/general-log/log.iml" />
     </modules>
   </component>
 </project>
