@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	fmt.Printf(redis_helper.GetRedisConnection(7))
+	fmt.Printf(redis_helper.GetBrandIduyltiBrand(7))
 	fmt.Println()
 }
