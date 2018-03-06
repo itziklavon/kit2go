@@ -10,9 +10,63 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.kit2go</groupId>
     <artifactId>http-client-helper</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
+
+    <build>
+        <sourceDirectory>${basedir}${file.separator}src/http_client_helper</sourceDirectory>
+        <directory>${basedir}${file.separator}bin</directory>
+
+        <resources>
+            <resource>
+                <directory>${basedir}${file.separator}resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>com.igormaznitsa</groupId>
+                <artifactId>mvn-golang-wrapper</artifactId>
+                <version>2.1.6</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <goVersion>${go.sdk.version}</goVersion>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>default-build</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>default-mvninstall</id>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>general_log</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/general-log/src/general_log</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-test</id>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-v</flag>
+                            </buildFlags>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     
 </project>
