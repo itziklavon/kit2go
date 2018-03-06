@@ -3,7 +3,7 @@ package redis_helper
 import (
 	"encoding/json"
 	"github.com/go-redis/redis"
-	"ithub.com/itziklavon/kit2go/configuration/src/configuration"
+	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
 )
 
