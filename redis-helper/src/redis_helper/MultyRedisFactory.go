@@ -2,10 +2,11 @@ package redis_helper
 
 import (
 	"encoding/json"
+
 	"github.com/go-redis/redis"
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
-	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
+	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
 )
 
 var DISCOVERY_URL = configuration.GetPropertyValue("DISCOVERY_URL")
@@ -39,50 +40,84 @@ func getBrandRedisConnection(host string) *redis.Client {
 	return getRedisConnectionByHost(host)
 }
 
-func KeysMuyltiBrand(brandId int) []string {
+func KeysMultyBrand(brandId int) []string {
 	conn := GetRedisConnection(brandId)
 	value, err := conn.Keys("*").Result()
 	if err != nil {
-		general_log.ErrorException(":Keys: couldn't get Keys from redis", err)
+		general_log.ErrorException(":KeysMultyBrand: couldn't get Keys from redis", err)
 	}
 	defer conn.Close()
 	return value
 }
 
-func KeysWithPatternuyltiBrand(brandId int, pattern string) []string {
+func KeysWithPatternMultyBrand(brandId int, pattern string) []string {
 	conn := GetRedisConnection(brandId)
 	value, err := conn.Keys(pattern).Result()
 	if err != nil {
-		general_log.ErrorException(":Keys: couldn't get Keys from redis", err)
+		general_log.ErrorException(":KeysWithPatternMultyBrand: couldn't get Keys from redis", err)
 	}
 	defer conn.Close()
 	return value
 }
 
-func GetuyltiBrand(brandId int, key string) string {
+func GetMultyBrand(brandId int, key string) string {
 	conn := GetRedisConnection(brandId)
 	value, err := conn.Get(key).Result()
 	if err != nil {
-		general_log.ErrorException(":Get: couldn't get key from redis: "+key, err)
+		general_log.ErrorException(":GetMultyBrand: couldn't get key from redis: "+key, err)
 	}
 	defer conn.Close()
 	return value
 }
 
-func HGetuyltiBrand(brandId int, key string, hkey string) string {
+func HGetMultyBrand(brandId int, key string, hkey string) string {
 	conn := GetRedisConnection(brandId)
 	value, err := conn.HGet(key, hkey).Result()
 	if err != nil {
-		general_log.ErrorException(":Set: couldn't get key from redis: "+key+", hKey: "+hkey, err)
+		general_log.ErrorException(":HGetMultyBrand: couldn't get key from redis: "+key+", hKey: "+hkey, err)
 	}
 	defer conn.Close()
 	return value
 }
 
-func GetSysParamuyltiBrand(brandId int, hkey string) string {
-	return HGetuyltiBrand(brandId, "SysParams", hkey)
+func HGetAllMultyBrand(brandId int, key string) map[string]string {
+	conn := GetRedisConnection(brandId)
+	value, err := conn.HGetAll(key).Result()
+	if err != nil {
+		general_log.ErrorException(":HGetAllMultyBrandSet: couldn't get key from redis: "+key, err)
+	}
+	defer conn.Close()
+	return value
 }
 
-func GetBrandIduyltiBrand(brandId int) string {
-	return GetSysParamuyltiBrand(brandId, "GS_BRAND_ID")
+func SetMultyBrand(brandId int, key string, value string) {
+	conn := GetRedisConnection(brandId)
+	err := conn.Set(key, value, 0).Err()
+	if err != nil {
+		general_log.ErrorException(":SetMultyBrand: couldn't get key from redis: "+key, err)
+	}
+	defer conn.Close()
+}
+
+func HSetMultyBrand(brandId int, key string, hkey string, value string) {
+	conn := GetRedisConnection(brandId)
+	err := conn.HSet(key, hkey, value).Err()
+	if err != nil {
+		general_log.ErrorException(":HSetMultyBrand: couldn't get key from redis: "+key+", hKey: "+hkey, err)
+	}
+	defer conn.Close()
+}
+func PubSubscribe(brandId int, pattern string) *redis.PubSub {
+	conn := GetRedisConnection(brandId)
+	pSubscribe := conn.PSubscribe(pattern)
+	defer conn.Close()
+	return pSubscribe
+}
+
+func GetSysParamMultyBrand(brandId int, hkey string) string {
+	return HGetMultyBrand(brandId, "SysParams", hkey)
+}
+
+func GetBrandIdMultyBrand(brandId int) string {
+	return GetSysParamMultyBrand(brandId, "GS_BRAND_ID")
 }
