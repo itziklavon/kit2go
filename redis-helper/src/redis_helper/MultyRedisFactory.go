@@ -24,7 +24,7 @@ func GetRedisConnection(brandId int) RedisSessionHelper {
 }
 
 func initMap() {
-	redisConnections = make(map[int]string)
+	redisConnections = make(map[int]RedisSessionHelper)
 	url := DISCOVERY_URL + "discovery-web/brand/services/REDIS"
 	httpResponse := http_client_helper.GETBody(url, nil)
 	var arr []RedisData
