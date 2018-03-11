@@ -6,10 +6,12 @@ import (
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
 )
 
-var redisHost = configuration.GetPropertyValue("REDIS_HOST")
+type RedisSessionHelper struct {
+	host string
+}
 
-func getRedisConnection() *redis.Client {
-	return getRedisConnectionByHost(redisHost)
+func (r RedisSessionHelper) getRedisConnection() *redis.Client {
+	return getRedisConnectionByHost(r.host)
 }
 
 func getRedisConnectionByHost(host string) *redis.Client {
@@ -25,8 +27,8 @@ func getRedisConnectionByHost(host string) *redis.Client {
 	return client
 }
 
-func Keys() []string {
-	conn := getRedisConnection()
+func (r RedisSessionHelper) Keys() []string {
+	conn := r.getRedisConnection()
 	value, err := conn.Keys("*").Result()
 	if err != nil {
 		general_log.ErrorException(":Keys: couldn't get Keys from redis", err)
@@ -35,8 +37,8 @@ func Keys() []string {
 	return value
 }
 
-func KeysWithPattern(pattern string) []string {
-	conn := getRedisConnection()
+func (r RedisSessionHelper) KeysWithPattern(pattern string) []string {
+	conn := r.getRedisConnection()
 	value, err := conn.Keys(pattern).Result()
 	if err != nil {
 		general_log.ErrorException(":Keys: couldn't get Keys from redis", err)
@@ -45,8 +47,8 @@ func KeysWithPattern(pattern string) []string {
 	return value
 }
 
-func Get(key string) string {
-	conn := getRedisConnection()
+func (r RedisSessionHelper) Get(key string) string {
+	conn := r.getRedisConnection()
 	value, err := conn.Get(key).Result()
 	if err != nil {
 		general_log.ErrorException(":Get: couldn't get key from redis: "+key, err)
@@ -55,8 +57,8 @@ func Get(key string) string {
 	return value
 }
 
-func HGet(key string, hkey string) string {
-	conn := getRedisConnection()
+func (r RedisSessionHelper) HGet(key string, hkey string) string {
+	conn := r.getRedisConnection()
 	value, err := conn.HGet(key, hkey).Result()
 	if err != nil {
 		general_log.ErrorException(":Set: couldn't get key from redis: "+key+", hKey: "+hkey, err)
@@ -65,10 +67,10 @@ func HGet(key string, hkey string) string {
 	return value
 }
 
-func GetSysParam(hkey string) string {
-	return HGet("SysParams", hkey)
+func (r RedisSessionHelper) GetSysParam(hkey string) string {
+	return r.HGet("SysParams", hkey)
 }
 
-func GetBrandId() string {
-	return GetSysParam("GS_BRAND_ID")
+func (r RedisSessionHelper) GetBrandId() string {
+	return r.GetSysParam("GS_BRAND_ID")
 }
