@@ -7,6 +7,5 @@ import (
 var redisHost = configuration.GetPropertyValue("REDIS_HOST")
 
 func GetRedisLocalConnection() RedisSessionHelper {
-	return RedisSessionHelper{host : redisHost}
+	return RedisSessionHelper{host: redisHost}
 }
-

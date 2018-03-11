@@ -3,9 +3,7 @@ package redis_helper
 import (
 	"encoding/json"
 
-	"github.com/go-redis/redis"
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
-	"github.com/itziklavon/kit2go/general-log/src/general_log"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
 )
 
@@ -32,6 +30,6 @@ func initMap() {
 	var arr []RedisData
 	_ = json.Unmarshal([]byte(httpResponse), &arr)
 	for i := 0; i < len(arr); i = i + 1 {
-		redisConnections[arr[i].BrandId] = RedisSessionHelper{host : arr[i].Uri}
+		redisConnections[arr[i].BrandId] = RedisSessionHelper{host: arr[i].Uri}
 	}
 }
