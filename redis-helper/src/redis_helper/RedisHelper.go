@@ -2,7 +2,6 @@ package redis_helper
 
 import (
 	"github.com/go-redis/redis"
-	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
 )
 
