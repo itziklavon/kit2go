@@ -49,7 +49,7 @@
                                 <flag>-u</flag>
                             </buildFlags>
                             <packages>
-                                <package>github.com/go-redis/redis</package>
+                                <package>github.com/garyburd/redigo/redis</package>
                             </packages>
                         </configuration>
                     </execution>

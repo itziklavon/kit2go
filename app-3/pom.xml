@@ -41,6 +41,20 @@
                                 <flag>-u</flag>
                             </buildFlags>
                             <packages>
+                                <package>github.com/garyburd/redigo/redis</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>redis-helper</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
                                 <package>github.com/itziklavon/kit2go/redis-helper/src/redis_helper</package>
                             </packages>
                         </configuration>

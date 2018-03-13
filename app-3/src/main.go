@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/itziklavon/kit2go/tree/master/redis-helper"
 	"github.com/garyburd/redigo/redis"
+	"github.com/itziklavon/kit2go/tree/master/redis-helper"
 )
 
 var done = make(chan bool)
