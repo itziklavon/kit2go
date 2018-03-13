@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/garyburd/redigo/redis"
-	"github.com/itziklavon/kit2go/redis-helper"
+	"github.com/itziklavon/kit2go/redis-helper/src/redis_helper"
 )
 
 var done = make(chan bool)
