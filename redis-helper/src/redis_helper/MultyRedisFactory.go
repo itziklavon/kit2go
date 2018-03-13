@@ -23,6 +23,17 @@ func GetRedisConnection(brandId int) RedisSessionHelper {
 	return redisConnections[brandId]
 }
 
+func GetBrandSet() []int {
+	if len(redisConnections) == 0 {
+		initMap()
+	}
+	var brandSet []int
+	for i := range redisConnections {
+		brandSet = append(brandSet, i)
+	}
+	return brandSet
+}
+
 func initMap() {
 	redisConnections = make(map[int]RedisSessionHelper)
 	url := DISCOVERY_URL + "discovery-web/brand/services/REDIS"

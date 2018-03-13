@@ -2,28 +2,28 @@ package main
 
 import (
 	"fmt"
-
+	"github.com/itziklavon/kit2go/tree/master/redis-helper"
 	"github.com/garyburd/redigo/redis"
 )
 
+var done = make(chan bool)
+
 func main() {
-	getMessages()
+	brandSet := redis_helper.GetBrandSet()
+	fmt.Println(brandSet)
+
+	for _, brandId := range brandSet {
+		fmt.Println("staring for brand:", brandId)
+		go handleMessges(brandId)
+	}
+	fmt.Println(<-done)
+
 }
 
-func getMessages() {
-
+func handleMessges(brandId int) {
 	for {
-		// Get a connection from a pool
-		c, err := redis.Dial("tcp", "172.17.30.17:6379")
-		if err != nil {
-			fmt.Println(err)
-		}
-		psc := redis.PubSubConn{c}
-
-		// Set up subscriptions
-		psc.Subscribe("__keyevent@0__:expired")
-
-		// While not a permanent error on the connection.
+		redisHelper := redis_helper.GetRedisConnection(brandId)
+		c, psc := redisHelper.Subscribe("__keyevent@0__:expired")
 		for c.Err() == nil {
 			switch v := psc.Receive().(type) {
 			case redis.Message:
@@ -39,4 +39,5 @@ func getMessages() {
 		}
 		c.Close()
 	}
+	done <- true
 }
