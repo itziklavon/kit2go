@@ -59,6 +59,20 @@
                             </packages>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>redis-helper</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper</package>
+                            </packages>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
