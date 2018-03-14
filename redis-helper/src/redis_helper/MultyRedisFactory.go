@@ -17,7 +17,7 @@ type RedisData struct {
 }
 
 func GetRedisConnection(brandId int) RedisSessionHelper {
-	if len(redisConnections) == 0 {
+	if len(redisConnections) == 0 || redisConnections[brandId] == (RedisSessionHelper{}) {
 		initMap()
 	}
 	return redisConnections[brandId]
