@@ -2,23 +2,29 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
+	"../../configuration/src/configuration"
+	"../../general-log/src/general_log"
+	"../../http-client-helper/src/http_client_helper"
+	"../../redis-helper/src/redis_helper"
 	"github.com/garyburd/redigo/redis"
-	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
-	"github.com/itziklavon/kit2go/redis-helper/src/redis_helper"
 )
+
+var fileName = configuration.GetLogPropertyValue("REDIS_LISTENER_LOG")
 
 var done = make(chan bool)
 
 func main() {
+	general_log.SetLogOutput(fileName)
 	brandSet := redis_helper.GetBrandSet()
-	fmt.Println(brandSet)
+	general_log.Debug(":main: extracted brands are: ", brandSet)
 	for _, brandId := range brandSet {
-		fmt.Println("staring for brand:", brandId)
+		general_log.Debug(":main: staring for brand: " + string(brandId))
 		go handleMessges(brandId)
 	}
-	fmt.Println(<-done)
+	general_log.Debug(strconv.FormatBool(<-done))
 }
 
 func handleMessges(brandId int) {
@@ -28,22 +34,16 @@ func handleMessges(brandId int) {
 		for c.Err() == nil {
 			switch v := psc.Receive().(type) {
 			case redis.Message:
-				fmt.Printf("%s: message: %s\n", v.Channel, v.Data)
-				fmt.Println()
 				messageData := string(v.Data[:])
-
-				fmt.Println("message is: " + messageData[:len(messageData)])
+				general_log.Debug(":handleMessges: exracted message is: " + messageData)
 				if strings.HasPrefix(messageData, "TKN_") {
-					logoutPlayer(brandId, messageData[4:len(messageData)])
+					if redisHelper.Exists(messageData[4:len(messageData)]) {
+						go logoutPlayer(brandId, messageData[4:len(messageData)])
+					}
 				}
-			case redis.Subscription:
-				fmt.Printf("%s: %s %d\n", v.Channel, v.Kind, v.Count)
-				fmt.Println()
-			case error:
-				fmt.Println(c.Err())
-				fmt.Println()
 			}
 		}
+		general_log.ErrorException(":handleMessges: an error occured in brand: "+string(brandId), c.Err())
 		c.Close()
 	}
 	done <- true
