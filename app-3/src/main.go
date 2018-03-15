@@ -42,7 +42,7 @@ func handleMessges(brandId int) {
 				}
 			}
 		}
-		general_log.ErrorException(":handleMessges: an error occured in brand: " + string(brandId), c.Err())
+		general_log.ErrorException(":handleMessges: an error occured in brand: "+string(brandId), c.Err())
 		c.Close()
 	}
 	done <- true
@@ -51,9 +51,9 @@ func handleMessges(brandId int) {
 func logoutPlayer(brandId int, token string) {
 	stdBrand := strconv.Itoa(brandId)
 	url := http_client_helper.GetDiscoveryUrl(brandId, "LOGOUT") + "/1.29.08/" + stdBrand + "/player"
-
 	values := map[string]string{"auth_token": token}
-	general_log.Debug("sending message to brand ", brandId, " with token:" + token, "to uri:" + url)
+	headers := map[string]string{"x-auth-token": token}
+	general_log.Debug("sending message to brand ", brandId, " with token:"+token, "to uri:"+url)
 
-	http_client_helper.POST(url, values, nil)
+	http_client_helper.POST(url, values, headers)
 }
