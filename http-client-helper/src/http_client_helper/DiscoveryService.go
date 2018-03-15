@@ -26,9 +26,9 @@ func GetDiscoveryUrl(brandId int, serviceName string) string {
 		initMap()
 	}
 	if len(discoveryMapping[brandId][serviceName]) == 0 {
-		return discoveryMapping[brandId][serviceName]
+		return discoveryMapping[-1][serviceName]
 	}
-	return discoveryMapping[-1][serviceName]
+	return discoveryMapping[brandId][serviceName]
 }
 
 func initMap() {
