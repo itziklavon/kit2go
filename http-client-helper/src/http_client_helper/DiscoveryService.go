@@ -22,10 +22,13 @@ type ServiceData struct {
 }
 
 func GetDiscoveryUrl(brandId int, serviceName string) string {
-	if len(discoveryMapping) == 0 || len(discoveryMapping[brandId][serviceName]) == 0 {
+	if len(discoveryMapping) == 0 || (len(discoveryMapping[-1][serviceName]) == 0 && len(discoveryMapping[brandId][serviceName]) == 0) {
 		initMap()
 	}
-	return discoveryMapping[brandId][serviceName]
+	if len(discoveryMapping[brandId][serviceName]) == 0 {
+		return discoveryMapping[brandId][serviceName]
+	}
+	return discoveryMapping[-1][serviceName]
 }
 
 func initMap() {

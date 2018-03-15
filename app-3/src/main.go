@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -21,7 +20,7 @@ func main() {
 	brandSet := redis_helper.GetBrandSet()
 	general_log.Debug(":main: extracted brands are: ", brandSet)
 	for _, brandId := range brandSet {
-		general_log.Debug(":main: staring for brand: " + string(brandId))
+		general_log.Debug(":main: staring for brand: ", brandId)
 		go handleMessges(brandId)
 	}
 	general_log.Debug(strconv.FormatBool(<-done))
@@ -43,16 +42,18 @@ func handleMessges(brandId int) {
 				}
 			}
 		}
-		general_log.ErrorException(":handleMessges: an error occured in brand: "+string(brandId), c.Err())
+		general_log.ErrorException(":handleMessges: an error occured in brand: " + string(brandId), c.Err())
 		c.Close()
 	}
 	done <- true
 }
 
 func logoutPlayer(brandId int, token string) {
-	url := http_client_helper.GetDiscoveryUrl(brandId, "GSS") + "/player/logout"
+	stdBrand := strconv.Itoa(brandId)
+	url := http_client_helper.GetDiscoveryUrl(brandId, "LOGOUT") + "/1.29.08/" + stdBrand + "/player"
+
 	values := map[string]string{"auth_token": token}
-	fmt.Println("sending message to brand 7 with token:" + token)
+	general_log.Debug("sending message to brand ", brandId, " with token:" + token, "to uri:" + url)
 
 	http_client_helper.POST(url, values, nil)
 }

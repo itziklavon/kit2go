@@ -60,7 +60,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>redis-helper</id>
+                        <id>http-client-helper</id>
                         <goals>
                             <goal>get</goal>
                         </goals>
@@ -70,6 +70,20 @@
                             </buildFlags>
                             <packages>
                                 <package>github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>configuration</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
                             </packages>
                         </configuration>
                     </execution>
