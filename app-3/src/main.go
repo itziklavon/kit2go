@@ -5,11 +5,11 @@ import (
 	"strconv"
 	"strings"
 
-	"../../configuration/src/configuration"
-	"../../general-log/src/general_log"
-	"../../http-client-helper/src/http_client_helper"
-	"../../redis-helper/src/redis_helper"
 	"github.com/garyburd/redigo/redis"
+	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
+	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
+	"github.com/itziklavon/kit2go/redis-helper/src/redis_helper"
 )
 
 var fileName = configuration.GetLogPropertyValue("REDIS_LISTENER_LOG")
