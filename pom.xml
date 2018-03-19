@@ -24,7 +24,9 @@
         <module>configuration</module>
         <module>general-log</module>
         <module>http-client-helper</module>
+        <module>mysql-helper</module>
         <module>redis-helper</module>
+        <module>queue-sender</module>
         <module>common</module>
         <module>app-1</module>
         <module>app-2</module>

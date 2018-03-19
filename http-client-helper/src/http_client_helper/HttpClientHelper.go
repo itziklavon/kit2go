@@ -1,13 +1,13 @@
 package http_client_helper
 
 import (
-	"encoding/json"
-	"net/http"
 	"bytes"
-	"github.com/itziklavon/kit2go/general-log/src/general_log"
+	"encoding/json"
 	"io/ioutil"
-)
+	"net/http"
 
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
+)
 
 type GenericHttpResponse struct {
 	httpResponse string

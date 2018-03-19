@@ -10,10 +10,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>http-client-helper</artifactId>
+    <artifactId>mysql-helper</artifactId>
 
     <build>
-        <sourceDirectory>${basedir}${file.separator}src/http_client_helper</sourceDirectory>
+        <sourceDirectory>${basedir}${file.separator}src/mysql_helper</sourceDirectory>
         <directory>${basedir}${file.separator}bin</directory>
 
         <resources>
@@ -39,6 +39,34 @@
                     <execution>
                         <id>default-mvninstall</id>
                         <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>mysql-go</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/go-sql-driver/mysql</package>
+                            </packages>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>http-client-helper</id>
+                        <goals>
+                            <goal>get</goal>
+                        </goals>
+                        <configuration>
+                            <buildFlags>
+                                <flag>-u</flag>
+                            </buildFlags>
+                            <packages>
+                                <package>github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper</package>
+                            </packages>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>general_log</id>
@@ -80,6 +108,5 @@
             </plugin>
         </plugins>
     </build>
-
     
 </project>

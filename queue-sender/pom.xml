@@ -10,10 +10,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>http-client-helper</artifactId>
+    <artifactId>queue-sender</artifactId>
 
     <build>
-        <sourceDirectory>${basedir}${file.separator}src/http_client_helper</sourceDirectory>
+        <sourceDirectory>${basedir}${file.separator}src/queue.sender</sourceDirectory>
         <directory>${basedir}${file.separator}bin</directory>
 
         <resources>
@@ -55,20 +55,6 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>configuration</id>
-                        <goals>
-                            <goal>get</goal>
-                        </goals>
-                        <configuration>
-                            <buildFlags>
-                                <flag>-u</flag>
-                            </buildFlags>
-                            <packages>
-                                <package>github.com/itziklavon/kit2go/configuration/src/configuration</package>
-                            </packages>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>default-test</id>
                         <configuration>
                             <buildFlags>
@@ -80,6 +66,5 @@
             </plugin>
         </plugins>
     </build>
-
     
 </project>
