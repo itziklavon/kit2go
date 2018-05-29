@@ -24,7 +24,7 @@ func main() {
 	general_log.SetLogOutput(fileName)
 	defer func() { //catch or finally
 		if err := recover(); err != nil { //catch
-			general_log.ErrorException("Exception: an error occurred", err)
+			general_log.Fatal("Exception: an error occurred", err)
 		}
 	}()
 	brandSet := redis_helper.GetBrandSet()
@@ -37,6 +37,11 @@ func main() {
 }
 
 func handleMessges(brandId int) {
+	defer func() { //catch or finally
+		if err := recover(); err != nil { //catch
+			general_log.Fatal("Exception: an error occurred", err)
+		}
+	}()
 	for {
 		redisHelper := redis_helper.GetRedisConnection(brandId)
 		c, psc := redisHelper.Subscribe("__keyevent@0__:expired")
@@ -60,6 +65,11 @@ func handleMessges(brandId int) {
 }
 
 func logoutPlayer(brandId int, token string, playerId string) {
+	defer func() { //catch or finally
+		if err := recover(); err != nil { //catch
+			general_log.Fatal("Exception: an error occurred", err)
+		}
+	}()
 	stdBrand := strconv.Itoa(brandId)
 	url := ""
 	if strings.EqualFold("NEW", configuration.GetTogglesPropertyValue("LOGOUT_API")) {
