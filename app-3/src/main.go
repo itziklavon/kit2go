@@ -22,6 +22,11 @@ var done = make(chan bool)
 
 func main() {
 	general_log.SetLogOutput(fileName)
+	defer func() { //catch or finally
+		if err := recover(); err != nil { //catch
+			general_log.ErrorException("Exception: an error occurred", err)
+		}
+	}()
 	brandSet := redis_helper.GetBrandSet()
 	general_log.Debug(":main: extracted brands are: ", brandSet)
 	for _, brandId := range brandSet {
@@ -56,16 +61,21 @@ func handleMessges(brandId int) {
 
 func logoutPlayer(brandId int, token string, playerId string) {
 	stdBrand := strconv.Itoa(brandId)
-	url := http_client_helper.GetDiscoveryUrl(brandId, "LOGOUT") + "/1.29.08/" + stdBrand + "/player"
+	url := ""
+	if strings.EqualFold("NEW", configuration.GetTogglesPropertyValue("LOGOUT_API")) {
+		url = http_client_helper.GetDiscoveryUrl(brandId, "LOGOUT") + "/1.29.08/" + stdBrand + "/player"
+	} else {
+		url = http_client_helper.GetDiscoveryUrl(brandId, "GSS") + "/player/1.29.08/player/logout"
+	}
 	values := map[string]string{"auth_token": token}
 	headers := map[string]string{"x-auth-token": token}
 	general_log.Debug("sending message to brand ", brandId, " with token:"+token, "to uri:"+url)
 	http_client_helper.POST(url, values, headers)
-	db := mysql_helper.GetMultiBrandConnection(http_client_helper.GetDiscoveryDbConnection(7))
+	db := mysql_helper.GetMultiBrandConnection(http_client_helper.GetDiscoveryDbConnection(brandId))
 	defer db.Close()
-	general_log.Debug("isnerting audit log for player: " + playerId)
+	general_log.Debug("inserting audit log for player: " + playerId)
 
-	auditLogInsert := "INSERT INTO tbl_auditLog (`playerId`, `date`, `action`, `operator`, `comment`, `newData`, `oldData`, `fieldName`) VALUES (?, now(), 'player_session_expired_logout', 'player', 'logging out player - session expired, automatic logout', 'logged-out', 'logged-in', 'Login status')"
+	auditLogInsert := "INSERT INTO tbl_loginsHistory (PlayerId, LoginTime, LogoutTime, IsSuccess, IsUnBlock, reason) VALUES (?, now(), now(), 1, 1, 'AUTO_LOGOUT')"
 	stmtIns, err := db.Prepare(auditLogInsert)
 	if err != nil {
 		general_log.ErrorException("an error occurred", err)

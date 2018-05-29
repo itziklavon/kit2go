@@ -11,7 +11,6 @@
 
     <artifactId>app-3</artifactId>
     <packaging>mvn-golang</packaging>
-    <version>1.0-${build.number}</version>
 
     <name>App-3</name>
 

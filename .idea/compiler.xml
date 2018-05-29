@@ -11,8 +11,11 @@
         <module name="app-3" />
         <module name="common" />
         <module name="configuration" />
+        <module name="http-client-helper" />
         <module name="log" />
-        <module name="redis" />
+        <module name="mysql-helper" />
+        <module name="queue-sender" />
+        <module name="redis-helper" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,11 +25,11 @@
       <module name="assembly-results" target="1.5" />
       <module name="common" target="1.5" />
       <module name="configuration" target="1.5" />
-      <module name="http-client" target="1.5" />
+      <module name="http-client-helper" target="1.5" />
       <module name="kit2go" target="1.5" />
       <module name="log" target="1.5" />
-      <module name="redis" target="1.5" />
-      <module name="redis-common" target="1.5" />
+      <module name="mysql-helper" target="1.5" />
+      <module name="queue-sender" target="1.5" />
       <module name="redis-helper" target="1.5" />
     </bytecodeTargetLevel>
   </component>
