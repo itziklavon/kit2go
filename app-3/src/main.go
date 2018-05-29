@@ -72,7 +72,9 @@ func logoutPlayer(brandId int, token string, playerId string) {
 	}()
 	stdBrand := strconv.Itoa(brandId)
 	url := ""
-	if strings.EqualFold("NEW", configuration.GetTogglesPropertyValue("LOGOUT_API")) {
+	logoutApi := configuration.GetTogglesPropertyValue("LOGOUT_API")
+	general_log.Debug("extracted toggle is: " + logoutApi)
+	if strings.EqualFold("NEW", logoutApi) {
 		url = http_client_helper.GetDiscoveryUrl(brandId, "LOGOUT") + "/1.29.08/" + stdBrand + "/player"
 	} else {
 		url = http_client_helper.GetDiscoveryUrl(brandId, "GSS") + "/player/1.29.08/player/logout"

@@ -31,8 +31,10 @@ func GetTogglesPropertyValue(key string) string {
 			log.Println(":GetTogglesPropertyValue: No caller information")
 		}
 		filename = strings.Replace(filename, "TogglesPropertiesLoader.go", "", 1) + defaultTogglesConf
-		defaultProps := getDefaultValue(filename)
+		defaultProps := getDefaultTogglesValue(filename)
 		myTogglesConfiguration = TogglesProperties{systemTogglesConfiguration: props, defaultTogglesConfiguration: defaultProps, ready: true}
+		log.Println(":getDefaultValue: extracted conf are", myTogglesConfiguration)
+
 	}
 	if len(myTogglesConfiguration.systemTogglesConfiguration[key]) == 0 {
 		return myTogglesConfiguration.defaultTogglesConfiguration[key]
