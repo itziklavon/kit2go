@@ -1,10 +1,12 @@
 package main
 
 import (
-	"github.com/itziklavon/kit2go/common/src/common"
+	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"log"
 	//"github.com/itziklavon/kit2go/redis/src/redis"
 )
 
 func main() {
-	common.PrintHello("hello")
+	logoutApi := configuration.GetTogglesPropertyValue("LOGOUT_API")
+	log.Println(logoutApi)
 }

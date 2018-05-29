@@ -20,7 +20,7 @@ type TogglesProperties struct {
 var myTogglesConfiguration = TogglesProperties{ready: false}
 
 func GetTogglesPropertyValue(key string) string {
-	if !myConfiguration.ready {
+	if !myTogglesConfiguration.ready {
 		props, err := ReadPropertiesFile(togglesConf)
 		if err != nil {
 			log.Println(":GetTogglesPropertyValue: Error while reading properties file", err)
