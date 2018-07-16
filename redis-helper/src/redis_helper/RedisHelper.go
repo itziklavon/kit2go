@@ -123,3 +123,9 @@ func (r RedisSessionHelper) Subscribe(channel string) (redis.Conn, redis.PubSubC
 	psc.Subscribe(channel)
 	return conn, psc
 }
+
+func (r RedisSessionHelper) ConfigSet(key string, value string) {
+	pool := r.getRedisConnection()
+	conn := pool.Get()
+	conn.Do("CONFIG", "SET", "notify-keyspace-events", "KEA")
+}
