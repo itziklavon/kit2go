@@ -44,7 +44,9 @@ func handleMessges(brandId int) {
 	}()
 	for {
 		redisHelper := redis_helper.GetRedisConnection(brandId)
+		redisHelper.ConfigSet("notify-keyspace-events", "KEA")
 		c, psc := redisHelper.Subscribe("__keyevent@0__:expired")
+		c2, psc2 := redisHelper.Subscribe("__keyevent@0__:expire")
 		for c.Err() == nil {
 			switch v := psc.Receive().(type) {
 			case redis.Message:
@@ -58,8 +60,22 @@ func handleMessges(brandId int) {
 				}
 			}
 		}
+		for c2.Err() == nil {
+			switch v := psc2.Receive().(type) {
+			case redis.Message:
+				messageData := string(v.Data[:])
+				general_log.Debug(":handleMessges: exracted message is: " + messageData)
+				if strings.HasPrefix(messageData, "TKN_") {
+					if redisHelper.Exists(messageData[4:len(messageData)]) {
+						playerId := redisHelper.HGet(messageData[4:len(messageData)], "id")
+						go logoutPlayer(brandId, messageData[4:len(messageData)], playerId)
+					}
+				}
+			}
+		}
 		general_log.ErrorException(":handleMessges: an error occured in brand: "+string(brandId), c.Err())
 		c.Close()
+		c2.Close()
 	}
 	done <- true
 }
