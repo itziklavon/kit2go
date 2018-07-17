@@ -10,11 +10,12 @@
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <mvn.version>3.0</mvn.version>
         <build.number>SNAPSHOT</build.number>
+        <api.version>1.0.0</api.version>
     </properties>
 
     <groupId>com.kit2go</groupId>
     <artifactId>kit2go</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
 
     <prerequisites>

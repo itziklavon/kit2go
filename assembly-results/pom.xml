@@ -5,25 +5,25 @@
     <parent>
         <groupId>com.kit2go</groupId>
         <artifactId>kit2go</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>assembly-results</artifactId>
     <packaging>pom</packaging>
-
+    <version>1.0.0-${build.number}</version>
     <name>Assembly results</name>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>redislistener</artifactId>
-            <version>${project.version}</version>
+            <version>${api.version}</version>
             <type>mvn-golang</type>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>all-apps-${project.version}</finalName>
+        <finalName>all-apps-${api.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
