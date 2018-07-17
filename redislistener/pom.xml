@@ -6,12 +6,12 @@
     <parent>
         <groupId>com.kit2go</groupId>
         <artifactId>kit2go</artifactId>
-        <version>1.0.0</version>
+        <version>1.30.01</version>
     </parent>
 
     <artifactId>redislistener</artifactId>
     <packaging>mvn-golang</packaging>
-    <version>1.0.0-${build.number}</version>
+    <version>1.30.01-${build.number}</version>
     <name>Redis Listener</name>
 
     <build>
