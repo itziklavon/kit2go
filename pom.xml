@@ -3,18 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kit2go</groupId>
-    <artifactId>kit2go</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <go.sdk.version>1.10</go.sdk.version>
         <go.wrapper.plugin.version>2.1.6</go.wrapper.plugin.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <mvn.version>3.0</mvn.version>
+        <build.number>SNAPSHOT</build.number>
     </properties>
+
+    <groupId>com.kit2go</groupId>
+    <artifactId>kit2go</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
 
     <prerequisites>
         <maven>${mvn.version}</maven>
@@ -28,9 +29,7 @@
         <module>redis-helper</module>
         <module>queue-sender</module>
         <module>common</module>
-        <module>app-1</module>
-        <module>app-2</module>
-        <module>app-3</module>
+        <module>redislistener</module>
         <module>assembly-results</module>
     </modules>
 
