@@ -98,19 +98,23 @@ func logoutPlayer(brandId int, token string, playerId string) {
 	values := map[string]string{"auth_token": token}
 	headers := map[string]string{"x-auth-token": token}
 	general_log.Debug("sending message to brand ", brandId, " with token:"+token, "to uri:"+url)
-	http_client_helper.POST(url, values, headers)
-	db := mysql_helper.GetMultiBrandConnection(http_client_helper.GetDiscoveryDbConnection(brandId))
-	defer db.Close()
-	general_log.Debug("inserting audit log for player: " + playerId)
+	postResponse := http_client_helper.POST(url, values, headers)
+	if postResponse.httpResponse > 303 || postResponse.httpResponse < 200 {
+		general_log.Info("player wasn't logged out player: " + playerId)
+	} else {
+		db := mysql_helper.GetMultiBrandConnection(http_client_helper.GetDiscoveryDbConnection(brandId))
+		defer db.Close()
+		general_log.Debug("inserting audit log for player: " + playerId)
 
-	auditLogInsert := "INSERT INTO tbl_loginsHistory (PlayerId, LoginTime, LogoutTime, IsSuccess, IsUnBlock, reason) VALUES (?, now(), now(), 1, 1, 'AUTO_LOGOUT')"
-	stmtIns, err := db.Prepare(auditLogInsert)
-	if err != nil {
-		general_log.ErrorException("an error occurred", err)
-	}
-	defer stmtIns.Close()
-	_, err = stmtIns.Exec(playerId)
-	if err != nil {
-		general_log.ErrorException("an error occurred", err)
+		auditLogInsert := "INSERT INTO tbl_loginsHistory (PlayerId, LoginTime, LogoutTime, IsSuccess, IsUnBlock, reason) VALUES (?, now(), now(), 1, 1, 'AUTO_LOGOUT')"
+		stmtIns, err := db.Prepare(auditLogInsert)
+		if err != nil {
+			general_log.ErrorException("an error occurred", err)
+		}
+		defer stmtIns.Close()
+		_, err = stmtIns.Exec(playerId)
+		if err != nil {
+			general_log.ErrorException("an error occurred", err)
+		}
 	}
 }

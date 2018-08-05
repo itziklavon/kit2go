@@ -10,7 +10,7 @@ import (
 )
 
 type GenericHttpResponse struct {
-	httpResponse string
+	httpResponse int
 	httpBody     string
 	httpHeaders  map[string]string
 }
@@ -36,7 +36,7 @@ func GET(url string, headers map[string]string) GenericHttpResponse {
 		responseHeaders[key] = value[0]
 		general_log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(body), httpHeaders: responseHeaders}
+	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(body), httpHeaders: responseHeaders}
 }
 
 func GETBody(url string, headers map[string]string) string {
@@ -85,7 +85,7 @@ func POST(url string, body map[string]string, headers map[string]string) Generic
 		responseHeaders[key] = value[0]
 		general_log.Info(":POST: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(responseBody), httpHeaders: responseHeaders}
+	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(responseBody), httpHeaders: responseHeaders}
 }
 
 func PUT(url string, body map[string]string, headers map[string]string) GenericHttpResponse {
@@ -110,7 +110,7 @@ func PUT(url string, body map[string]string, headers map[string]string) GenericH
 		responseHeaders[key] = value[0]
 		general_log.Info(":PUT: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(responseBody), httpHeaders: responseHeaders}
+	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(responseBody), httpHeaders: responseHeaders}
 }
 
 func DELETE(url string, body map[string]string, headers map[string]string) GenericHttpResponse {
@@ -135,5 +135,5 @@ func DELETE(url string, body map[string]string, headers map[string]string) Gener
 		responseHeaders[key] = value[0]
 		general_log.Info(":DELETE: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.Status, httpBody: string(responseBody), httpHeaders: responseHeaders}
+	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(responseBody), httpHeaders: responseHeaders}
 }
