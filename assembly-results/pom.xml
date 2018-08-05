@@ -4,26 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.kit2go</groupId>
-        <artifactId>kit2go2</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>kit2go</artifactId>
+        <version>1.30.01</version>
     </parent>
 
     <artifactId>assembly-results</artifactId>
     <packaging>pom</packaging>
-
+    <version>1.30.01-${build.number}</version>
     <name>Assembly results</name>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>app-1</artifactId>
-            <version>${project.version}</version>
-            <type>mvn-golang</type>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>app-2</artifactId>
-            <version>${project.version}</version>
+            <artifactId>redislistener</artifactId>
+            <version>${api.version}-${build.number}</version>
             <type>mvn-golang</type>
         </dependency>
     </dependencies>

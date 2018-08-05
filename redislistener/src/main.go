@@ -99,7 +99,7 @@ func logoutPlayer(brandId int, token string, playerId string) {
 	headers := map[string]string{"x-auth-token": token}
 	general_log.Debug("sending message to brand ", brandId, " with token:"+token, "to uri:"+url)
 	postResponse := http_client_helper.POST(url, values, headers)
-	if postResponse.httpResponse > 303 || postResponse.httpResponse < 200 {
+	if postResponse.HttpResponse > 303 || postResponse.HttpResponse < 200 {
 		general_log.Info("player wasn't logged out player: " + playerId)
 	} else {
 		db := mysql_helper.GetMultiBrandConnection(http_client_helper.GetDiscoveryDbConnection(brandId))

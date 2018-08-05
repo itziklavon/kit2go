@@ -3,26 +3,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kit2go</groupId>
-    <artifactId>kit2go2</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <go.sdk.version>1.9</go.sdk.version>
+        <go.sdk.version>1.10</go.sdk.version>
         <go.wrapper.plugin.version>2.1.6</go.wrapper.plugin.version>
         <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
         <mvn.version>3.0</mvn.version>
+        <build.number>SNAPSHOT</build.number>
+        <api.version>1.30.01</api.version>
     </properties>
+
+    <groupId>com.kit2go</groupId>
+    <artifactId>kit2go</artifactId>
+    <version>1.30.01</version>
+    <packaging>pom</packaging>
 
     <prerequisites>
         <maven>${mvn.version}</maven>
     </prerequisites>
 
     <modules>
-        <module>app-1</module>
-        <module>app-2</module>
+        <module>configuration</module>
+        <module>general-log</module>
+        <module>http-client-helper</module>
+        <module>mysql-helper</module>
+        <module>redis-helper</module>
+        <module>queue-sender</module>
+        <module>common</module>
+        <module>redislistener</module>
         <module>assembly-results</module>
     </modules>
 
@@ -47,10 +55,5 @@
             <name>GameScale Releases</name>
             <url>http://192.168.10.50:8081/nexus/content/repositories/releases</url>
         </repository>
-        <!--<repository>-->
-        <!--<id>releases</id>-->
-        <!--<name>GameScale Releases</name>-->
-        <!--<url>http://35.176.201.181:8081/repository/Releases/</url>-->
-        <!--</repository>-->
     </repositories>
 </project>

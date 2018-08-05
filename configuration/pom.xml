@@ -7,11 +7,10 @@
     <parent>
         <groupId>com.kit2go</groupId>
         <artifactId>kit2go</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.30.01</version>
     </parent>
 
     <artifactId>configuration</artifactId>
-    <version>1.0</version>
 
     <build>
         <sourceDirectory>${basedir}${file.separator}src</sourceDirectory>
