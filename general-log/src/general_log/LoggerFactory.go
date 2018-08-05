@@ -2,10 +2,9 @@ package general_log
 
 import (
 	"fmt"
-	"log"
-
-	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"configuration"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
+	"log"
 )
 
 var logLevel = configuration.GetPropertyValue("LOG_LEVEL")
@@ -20,25 +19,25 @@ func SetLogOutput(fileName string) {
 	})
 }
 
-func Debug(message ...interface{}) {
+func Debug(message string) {
 	if logLevel == "DEBUG" {
-		log.Println(message...)
+		log.Println(message)
 	}
 }
 
-func Info(message ...interface{}) {
+func Info(message string) {
 	if logLevel == "INFO" || logLevel == "DEBUG" {
-		log.Println(message...)
+		log.Println(message)
 	}
 }
 
-func Error(message ...interface{}) {
+func Error(message string) {
 	if logLevel == "ERROR" || logLevel == "INFO" || logLevel == "DEBUG" {
-		log.Println(message...)
+		log.Println(message)
 	}
 }
 
-func ErrorException(message interface{}, err error) {
+func ErrorException(message string, err error) {
 	if logLevel == "ERROR" {
 		log.Println(message, err)
 	}
