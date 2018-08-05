@@ -135,5 +135,5 @@ func DELETE(url string, body map[string]string, headers map[string]string) Gener
 		responseHeaders[key] = value[0]
 		general_log.Info(":DELETE: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(responseBody), httpHeaders: responseHeaders}
+	return GenericHttpResponse{HttpResponse: resp.StatusCode, HttpBody: string(responseBody), HttpHeaders: responseHeaders}
 }
