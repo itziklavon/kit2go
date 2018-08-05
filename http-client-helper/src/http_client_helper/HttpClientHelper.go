@@ -10,9 +10,9 @@ import (
 )
 
 type GenericHttpResponse struct {
-	httpResponse int
-	httpBody     string
-	httpHeaders  map[string]string
+	HttpResponse int
+	HttpBody     string
+	HttpHeaders  map[string]string
 }
 
 func GET(url string, headers map[string]string) GenericHttpResponse {
@@ -36,7 +36,7 @@ func GET(url string, headers map[string]string) GenericHttpResponse {
 		responseHeaders[key] = value[0]
 		general_log.Info(":GET: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(body), httpHeaders: responseHeaders}
+	return GenericHttpResponse{HttpResponse: resp.StatusCode, HttpBody: string(body), HttpHeaders: responseHeaders}
 }
 
 func GETBody(url string, headers map[string]string) string {
@@ -85,7 +85,7 @@ func POST(url string, body map[string]string, headers map[string]string) Generic
 		responseHeaders[key] = value[0]
 		general_log.Info(":POST: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(responseBody), httpHeaders: responseHeaders}
+	return GenericHttpResponse{HttpResponse: resp.StatusCode, HttpBody: string(responseBody), HttpHeaders: responseHeaders}
 }
 
 func PUT(url string, body map[string]string, headers map[string]string) GenericHttpResponse {
@@ -110,7 +110,7 @@ func PUT(url string, body map[string]string, headers map[string]string) GenericH
 		responseHeaders[key] = value[0]
 		general_log.Info(":PUT: response Headers: key: " + key + ", value: " + value[0])
 	}
-	return GenericHttpResponse{httpResponse: resp.StatusCode, httpBody: string(responseBody), httpHeaders: responseHeaders}
+	return GenericHttpResponse{HttpResponse: resp.StatusCode, HttpBody: string(responseBody), HttpHeaders: responseHeaders}
 }
 
 func DELETE(url string, body map[string]string, headers map[string]string) GenericHttpResponse {
