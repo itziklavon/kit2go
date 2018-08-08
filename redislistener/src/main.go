@@ -106,13 +106,13 @@ func logoutPlayer(brandId int, token string, playerId string) {
 		defer db.Close()
 		general_log.Debug("inserting audit log for player: " + playerId)
 
-		auditLogInsert := "INSERT INTO tbl_loginsHistory (PlayerId, LoginTime, LogoutTime, IsSuccess, IsUnBlock, reason) VALUES (?, now(), now(), 1, 1, 'AUTO_LOGOUT')"
+		auditLogInsert := "SELECT insert_auto_logout(?, ?)"
 		stmtIns, err := db.Prepare(auditLogInsert)
 		if err != nil {
 			general_log.ErrorException("an error occurred", err)
 		}
 		defer stmtIns.Close()
-		_, err = stmtIns.Exec(playerId)
+		_, err = stmtIns.Exec(playerId, token)
 		if err != nil {
 			general_log.ErrorException("an error occurred", err)
 		}

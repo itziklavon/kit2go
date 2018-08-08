@@ -16,3 +16,4 @@ http-client-helper/bin/
 redis-helper/bin/
 mysql-helper/bin/
 queue-sender/bin/
+redislistener/bin/
