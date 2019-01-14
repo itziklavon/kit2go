@@ -2,6 +2,7 @@ package redis_helper
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
@@ -18,6 +19,13 @@ type RedisData struct {
 
 func GetRedisConnection(brandId int) RedisSessionHelper {
 	if len(redisConnections) == 0 || redisConnections[brandId] == (RedisSessionHelper{}) {
+		initMap()
+	}
+	value, ok := redisConnections[brandId]
+	if ok {
+		fmt.Println("Key found value is: ", value)
+	} else {
+		fmt.Println("Key not found")
 		initMap()
 	}
 	return redisConnections[brandId]

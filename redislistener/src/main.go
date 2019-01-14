@@ -84,7 +84,8 @@ func handleMessges(brandId int) {
 
 func sendIterations(brandId int) {
 	for {
-		redis_helper.SetExMultyBrand(brandId, "REDIS_KEEP_ALIVE", "true")
+		myRedisHelper := redis_helper.GetRedisConnection(brandId)
+		myRedisHelper.SetEx("REDIS_KEEP_ALIVE", "true")
 		time.Sleep(5 * time.Second)
 	}
 }
