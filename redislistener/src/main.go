@@ -3,8 +3,9 @@ package main
 import (
 	"strconv"
 	"strings"
+	"time"
 
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
@@ -42,6 +43,7 @@ func handleMessges(brandId int) {
 			general_log.Fatal("Exception: an error occurred", err)
 		}
 	}()
+	go sendIterations(brandId)
 	for {
 		redisHelper := redis_helper.GetRedisConnection(brandId)
 		redisHelper.ConfigSet("notify-keyspace-events", "KEA")
@@ -78,6 +80,13 @@ func handleMessges(brandId int) {
 		c2.Close()
 	}
 	done <- true
+}
+
+func sendIterations(brandId int) {
+	for {
+		redis_helper.SetExMultyBrand(brandId, "REDIS_KEEP_ALIVE", "true")
+		time.Sleep(5 * time.Second)
+	}
 }
 
 func logoutPlayer(brandId int, token string, playerId string) {

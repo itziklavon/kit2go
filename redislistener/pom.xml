@@ -6,12 +6,12 @@
     <parent>
         <groupId>com.kit2go</groupId>
         <artifactId>kit2go</artifactId>
-        <version>1.30.01</version>
+        <version>2.0.0</version>
     </parent>
 
     <artifactId>redislistener</artifactId>
     <packaging>mvn-golang</packaging>
-    <version>1.30.01-${build.number}</version>
+    <version>2.0.0-${build.number}</version>
     <name>Redis Listener</name>
 
     <build>
@@ -41,7 +41,7 @@
                                 <flag>-u</flag>
                             </buildFlags>
                             <packages>
-                                <package>github.com/garyburd/redigo/redis</package>
+                                <package>github.com/gomodule/redigo/redis</package>
                             </packages>
                         </configuration>
                     </execution>

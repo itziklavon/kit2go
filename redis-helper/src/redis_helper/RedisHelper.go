@@ -3,7 +3,7 @@ package redis_helper
 import (
 	"time"
 
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 	"github.com/itziklavon/kit2go/general-log/src/general_log"
 )
 
@@ -94,6 +94,18 @@ func (r RedisSessionHelper) HGet(key string, hkey string) string {
 	}
 	defer conn.Close()
 	return string(data)
+}
+
+func (r RedisSessionHelper) SetEx(key string, hkey string) {
+	pool := r.getRedisConnection()
+	conn := pool.Get()
+	var data []byte
+	data, err := redis.Bytes(conn.Do("SETEX", key, 5, hkey))
+	if err != nil {
+		general_log.ErrorException(":SETEX: an error occurred", err)
+		return string(data)
+	}
+	defer conn.Close()
 }
 
 func (r RedisSessionHelper) Exists(key string) bool {
