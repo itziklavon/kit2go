@@ -99,7 +99,6 @@ func (r RedisSessionHelper) HGet(key string, hkey string) string {
 func (r RedisSessionHelper) SetEx(key string, hkey string) {
 	pool := r.getRedisConnection()
 	conn := pool.Get()
-	var data []byte
 	data, err := redis.Bytes(conn.Do("SETEX", key, 5, hkey))
 	if err != nil {
 		general_log.ErrorException(":SETEX: an error occurred", err)
