@@ -50,6 +50,10 @@ func handleMessges(brandId int) {
 		c, psc := redisHelper.Subscribe("__keyevent@0__:expired")
 		c2, psc2 := redisHelper.Subscribe("__keyevent@0__:expire")
 		for c.Err() == nil {
+
+			general_log.Debug(":handleMessges: sending ping in brand - ", brandId)
+			c.Do("PING")
+
 			switch v := psc.Receive().(type) {
 			case redis.Message:
 				messageData := string(v.Data[:])
@@ -63,6 +67,10 @@ func handleMessges(brandId int) {
 			}
 		}
 		for c2.Err() == nil {
+
+			general_log.Debug(":handleMessges: sending ping in brand - ", brandId)
+			c.Do("PING")
+
 			switch v := psc2.Receive().(type) {
 			case redis.Message:
 				messageData := string(v.Data[:])

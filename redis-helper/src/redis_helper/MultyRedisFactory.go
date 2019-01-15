@@ -2,9 +2,9 @@ package redis_helper
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
 )
 
@@ -23,9 +23,9 @@ func GetRedisConnection(brandId int) RedisSessionHelper {
 	}
 	value, ok := redisConnections[brandId]
 	if ok {
-		fmt.Println("Key found value is: ", value)
+		general_log.Debug("Key found value is: ", value)
 	} else {
-		fmt.Println("Key not found")
+		general_log.Debug("Key not found")
 		initMap()
 	}
 	return redisConnections[brandId]
