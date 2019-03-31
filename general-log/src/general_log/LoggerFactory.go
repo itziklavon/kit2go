@@ -39,7 +39,7 @@ func Error(message ...interface{}) {
 }
 
 func ErrorException(message interface{}, err error) {
-	if logLevel == "ERROR" {
+	if logLevel == "ERROR" || logLevel == "INFO" || logLevel == "DEBUG" {
 		log.Println(message, err)
 	}
 }
