@@ -13,8 +13,7 @@ import (
 )
 
 func GetMultiBrandConnection(discoveryData http_client_helper.DiscoveryDbData) *sqlx.DB {
-	mysqluri := discoveryData.UserName + ":" +
-		discoveryData.Password + "@tcp(" + discoveryData.Host + ":3306" +
+	mysqluri := discoveryData.UserName + ":pFFttuTPL4FWjKQFcPSH5EK2TQ3m9RyELeWk9yNkRC7nHa4soN" + "@tcp(" + discoveryData.Host + ":3306" +
 		")/" + discoveryData.SchemaName
 	db, err := sqlx.Connect("mysql", mysqluri)
 	general_log.Debug(mysqluri)
