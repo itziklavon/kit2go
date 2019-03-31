@@ -12,7 +12,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-func GetMultiBrandConnection(discoveryData http_client_helper.DiscoveryDbData) *sql.DB {
+func GetMultiBrandConnection(discoveryData http_client_helper.DiscoveryDbData) *sqlx.DB {
 	mysqluri := discoveryData.UserName + ":" +
 		discoveryData.Password + "@tcp(" + discoveryData.Host + ":3306" +
 		")/" + discoveryData.SchemaName
