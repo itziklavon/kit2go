@@ -16,7 +16,7 @@ func GetMultiBrandConnection(discoveryData http_client_helper.DiscoveryDbData) *
 	mysqluri := discoveryData.UserName + ":" +
 		discoveryData.Password + "@tcp(" + discoveryData.Host + ":3306" +
 		")/" + discoveryData.SchemaName
-	db, err := sqlx.Connect("mysql", "root:root@tcp(localhost:3306)/story")
+	db, err := sqlx.Connect("mysql", mysqluri)
 	general_log.Debug(mysqluri)
 	if err != nil {
 		general_log.ErrorException(":GetMultiBrandConnection: couldn't connect to DB, host: "+discoveryData.Host, err)
