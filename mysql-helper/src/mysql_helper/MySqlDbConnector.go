@@ -2,23 +2,24 @@ package mysql_helper
 
 import (
 	"database/sql"
-	"log"
+
+	"github.com/itziklavon/kit2go/general-log/src/general_log"
 
 	"github.com/itziklavon/kit2go/configuration/src/configuration"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/itziklavon/kit2go/http-client-helper/src/http_client_helper"
+	"github.com/jmoiron/sqlx"
 )
 
 func GetMultiBrandConnection(discoveryData http_client_helper.DiscoveryDbData) *sql.DB {
 	mysqluri := discoveryData.UserName + ":" +
 		discoveryData.Password + "@tcp(" + discoveryData.Host + ":3306" +
 		")/" + discoveryData.SchemaName
-	log.Println(mysqluri)
-	db, err := sql.Open("mysql", mysqluri)
+	db, err := sqlx.Connect("mysql", "root:root@tcp(localhost:3306)/story")
+	general_log.Debug(mysqluri)
 	if err != nil {
-		log.Println(":GetMultiBrandConnection: couldn't connect to DB, host: " + discoveryData.Host)
-		log.Println(err)
+		general_log.ErrorException(":GetMultiBrandConnection: couldn't connect to DB, host: "+discoveryData.Host, err)
 	}
 	return db
 }
@@ -31,8 +32,7 @@ func GetLocalConnection(schemaName string) *sql.DB {
 		password+"@tcp("+host+
 		")/"+schemaName)
 	if err != nil {
-		log.Println(":GetLocalConnection: couldn't connect to DB, host: " + host)
-		log.Println(err)
+		general_log.ErrorException(":GetMultiBrandConnection: couldn't connect to local db", err)
 	}
 	return db
 }
